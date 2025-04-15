@@ -1,0 +1,494 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+    /* Style for button-like links */
+    .button-link {
+        display: inline-block;
+		box-sizing: border-box;
+        padding: 10px 20px;
+        /*background-color: rgb(74, 74, 74);*/
+        /*color: white;*/
+		/*color: rgb(255, 255, 255);*/
+		color: #fff !important; /* Set text color to white */
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+
+		background-color: rgb(54, 54, 54);
+		border-bottom-color: rgba(0, 0, 0, 0);
+		border-bottom-left-radius: 290486px;
+		border-bottom-right-radius: 290486px;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-image-outset: 0;
+		border-image-repeat: stretch;
+		border-image-slice: 100%;
+		border-image-source: none;
+		border-image-width: 1;
+		border-left-color: rgba(0, 0, 0, 0);
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-right-color: rgba(0, 0, 0, 0);
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top-color: rgba(0, 0, 0, 0);
+		border-top-left-radius: 290486px;
+		border-top-right-radius: 290486px;
+		border-top-style: solid;
+		border-top-width: 1px;
+		box-shadow: none;
+    }
+
+    /*.button-link:hover {*/
+    /*    background-color: #208799;*/
+    /*}*/
+</style>
+
+<html>
+<head>
+	<title>MicroFlow: Domain-Specific Optical Flow for Ground Deformation Estimation in Seismic Events</title>
+	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="MicroFlow: Domain-Specific Optical Flow for Ground Deformation Estimation in Seismic Events" />
+	<meta property="og:description" content="Paper description." />
+
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+	<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px"></span>
+		<table align=center width=1200px>
+			<table align=center width=850px>
+				<tr>
+					<td colspan="4" style="height: 20px;"></td>
+				</tr>
+				<tr>
+					<td align=center width=125px>
+						<center>
+							<span style="font-size:20px"><a href="https://jbertrand89.github.io/">Juliette Bertrand</a><sup>1</sup></span>
+						</center>
+					</td>
+					<td align=center width=175px>
+						<center>
+							<span style="font-size:20px"><a href="https://sophiegif.github.io/">Sophie Giffard-Roisin</a><sup>2</sup></span>
+						</center>
+					</td>
+					<td align=center width=125px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.co.uk/citations?user=Oz-i6NEAAAAJ&hl=en">James Hollingsworth</a><sup>2</sup></span>
+						</center>
+					</td>
+					<td align=center width=125px>
+						<center>
+							<span style="font-size:20"><a href="https://lear.inrialpes.fr/people/mairal/">Julien Mairal</a><sup>1</sup></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=250px>
+				<tr>
+					<td colspan="2" style="height: 5px;"></td>
+				</tr>
+				<tr>
+					<td align=right width=100px>
+<!--						<center>-->
+							<span style="font-size:16px"><sup>1</sup>Inria</span>
+<!--						</center>-->
+					</td>
+					<td align=left width=100px>
+						<center>
+							<span style="font-size:16px"><sup>2</sup>IS-Terre</span>
+						</center>
+					</td>
+				</tr>
+			</table>
+
+			<table align=center width=250px>
+				<tr>
+				<td colspan="4" style="height: 20px;"></td>
+				</tr>
+				<tr>
+					<td align=center width=120px>
+					<center>
+						<a class="button-link" href='https://openreview.net/pdf?id=9QsdPQlWiE'>Paper</a>
+					</center>
+				</td>
+				<td align=center width=120px>
+					<center>
+						<a class="button-link" href='https://github.com/ttt-matching-based-vos/ttt_matching_vos'>GitHub</a>
+					</center>
+				</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<center>
+		<table align=center width=1200px>
+			<!-- Add some vertical space -->
+			<tr>
+				<td colspan="4" style="height: 50px;"></td>
+			</tr>
+			<tr>
+				<td width=1200px>
+                <center>
+                    <img class="round" style="width:1200px" src="./resources/teaser.png" />
+                </center>
+            	</td>
+			</tr>
+			<tr>
+				<td align="justify">
+			<font size="4">
+
+						Dense ground displacement measurements are crucial for geological studies but
+						are impractical to collect directly. Instead, displacement fields are
+						estimated using optical satellite images from different acquisition times. Going 
+						from (a) high-resolution to (b)-(d) medium-resolution remote sensing optical images 
+						acquired before and after real seismic events, this task involves small to very small displacements, 
+						requiring sub-pixel precision for accurate estimates and robustness to high temporal variations 
+						from the image acquisition process.
+						<br>
+						Traditionnaly designed to achieve subpixel precision, classical models (1-2) are overly sensitive to temporal change, while
+						data-driven models (3-4) using non iterative refinements (3) or correlation-based backbones (4) fail to achieve subpixel precision.
+						<br>
+						<br>
+						MicroFlow (5) achieves subpixel precision, preserves fault-line sharpness and improves the robustness to external 
+						perturbations of the signal such as (c) geological activities and (d) human activities, among others. 
+						<!-- Using a correlation-independent backbone, enhanced with iterative refinements and explicit warping, MicroFlow (5) achieves subpixel precision (todo). 
+						Through non-convex regularization, it preserves fault-line sharpness (todo) and improves the robustness to external perturbations of the signal such 
+						as (c) geological activities and (d) human activities, among others.  -->
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="height: 50px;"></td>
+			</tr>
+		</table>
+	</center>
+
+
+	<hr>
+
+	<center>
+		<table align=center width=1200px>
+			<center><h1>Method</h1></center>
+
+			<tr>
+			<h3 style="text-align: left;">Correlation-independent backbone</h3>
+			</tr>
+			
+			<tr>
+				<td align="justify">
+			<font size="4">
+
+				We estimate the displacement field from the input images, using a modified U-Net encoder-decoder network \(g\) tailored for displacement field estimation.
+				
+				Encoder-decoder networks traditionally rely on correlation-dependent encoders (b) where the input images are processed independently, through an
+				image encoder \(e_I\) in a siamese fashion before being fed to a correlation layer followed by a correlation encoder \(e_C\). 
+				Instead, we use a correlation-independent encoder (a) where the input images are processed jointly by an image-pair encoder \(e_{P}\). 
+				Using a correlation-independent encoder is necessary to achieve subpixel precision.
+				</td>
+			</tr>
+			<tr>
+				<td width=1200px>
+                <center>
+                    <img class="round" style="width:600px" src="./resources/method_non_iterative.png" />
+                </center>
+            	</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="height: 50px;"></td>
+			</tr>
+		</table>
+
+		<table align=center width=1200px>
+			<tr>
+			<h3 style="text-align: left;">Iterative refinements with explicit warping and weighted loss</h3>
+			</tr>
+			
+			<tr>
+				<td align="justify">
+			<font size="4">
+
+				Instead of estimating the displacement field in a single step, we iteratively refine it, by computing updates 
+				\(\mathbf{\Delta df_i} = g_{i}(x_i)\) as 
+				\(df_i = df_{i-1} + \mathbf{\Delta df_i}\).
+				The refined field \(df_i\) is used to warp \(I_2\) via a Spatial Transformer Network, producing \(I_2^i\), which is stacked with \(I_1\) for the next iteration.
+				Networks \((g_1, ..., g_n)\) can either have separate weights (\(g_1 \neq g_2 \neq g_n\)) or share weights (\(g_1 = g_2 = g_n = g\)). 
+				In both cases, parameters are optimized end to end.
+				
+
+				The model is trained using a weighted loss instead of the standard \(L_1\) loss on the final displacement field:
+				 \[
+				 \mathcal{L} = \sum_{i=1}^{n} \mathcal{L}_{i} = \sum_{i=1}^{n} \gamma^{n-i} |df_{gt} - df_i| 
+				 \]
+				 where \(\gamma\) is an attenuation factor, prioritizing later predictions. This loss enforces predicting a good estimate at each iteration instead of shifting at each iterations and compensating with the last iteration model.
+				</td>
+			</tr>
+			<tr>
+				<td width=1200px>
+                <center>
+                    <img class="round" style="width:1000px" src="./resources/method_iterative.png" />
+                </center>
+            	</td>
+			</tr>
+		</table>
+
+		<table align=center width=1200px>
+			<tr>
+			<h3 style="text-align: left;">A posteriori regularization</h3>
+			</tr>
+			
+			<tr>
+				<td align="justify">
+			<font size="4">
+
+<!-- 				
+				Estimating the dense ground displacement field $\vdf_{\text{earth}} = (\vu_{\text{earth}}, \vv_{\text{earth}})$ requires inferring the mapping between points 
+				on the Earth’s surface, which doesn't translate exactly to a mapping between pixel intensities in the images, due to the acquisition gaps that leads 
+				to perturbations altering scene appearance.
+				Data-driven approaches use strong priors on the ground deformation field to directly estimate $\vdf_{\text{earth}}$. However, the lack of real-world annotations 
+				and the variability of temporal changes relative to displacement magnitude often lead to noisy estimates, $\vdf_{\text{noisy}}$. 
+				This poses an inverse problem: recovering the true displacement field $\vdf_{\text{earth}}$ from $\vdf_{\text{noisy}}$. -->
+
+				Estimating the dense ground displacement field \( df_{\text{earth}} \) requires inferring the mapping between points 
+				on the Earth’s surface, which doesn't translate exactly to a mapping between pixel intensities in the images, 
+				due to the acquisition gaps causing scene perturbations. 
+				Data-driven methods leverage priors to estimate \( df_{\text{earth}} \), but real-world annotation scarcity 
+				and temporal variability introduce noise, yielding \( df_{\text{noisy}} \). The challenge is then to recover \( df_{\text{earth}} \) 
+				from \( df_{\text{noisy}} \), posing an inverse problem.
+				We frame it as an optimization task aiming to denoise the field while preserving spatial smoothness:
+				\[
+				df_{\text{denoised}} = \arg \min_{df \in \mathbb{R}^{H \times W \times 2}} \left( \|df - df_{\text{noisy}}\|_2^2 + \lambda \psi(df) \right)
+				\]
+
+				And use a non-convex penalty \(\psi(u) = \log(|\nabla u| + \epsilon) \), which encourages smoothness away from the fault while preserving the 
+				sharpness of the fault-line.
+				
+				
+				</td>
+			</tr>
+			<!-- <tr>
+				<td width=1200px>
+                <center>
+                    <img class="round" style="width:600px" src="./resources/method_non_iterative.png" />
+                </center>
+            	</td>
+			</tr> -->
+		</table>
+	</center>
+
+
+	<hr>
+
+
+
+	<table align=center width=1200px>
+		<center><h1>Training on semi-synthetic data</h1></center>
+
+		<center>
+		<tr>
+			<td align="justify">
+				<font size="4">
+					With limited manually annotated data, quantitatively assessing model performance on real data remains challenging. We first rely 
+					on semi-synthetic benchmarks on <a href="https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.57745/G02ZXZ&version=1.0">FaultDeform</a>, though imperfect, but offering valuable insights and allowing quantitative comparisons. We use the 
+					standard average point error metric (EPE) to quantify photometric accuracy and introduce a smoothness metric 
+					(\(||{\nabla f} ||_2\)) to assess noise levels in near-fault and non-fault regions, ensuring adherence to physical constraints.
+					
+					Our proposed method MicroFlow shows significant improvement over two widely used methods in the geoscience community, COSI-Corr and MicMac.
+					TODO add smoothness near fault in the table.
+			</td>
+		</tr>
+		<tr>
+			<td width=1200px>
+                <center>
+                    <img class="round" style="width:600px" src="./resources/results.png" />
+                </center>
+            </td>
+		</tr>
+	</table>
+	<table align=center width=1200px>
+		
+
+	</table>
+	<br>
+
+	<hr>
+		<table align=center width=1200px>
+		<center><h1>Inference on real-world examples</h1></center>
+		<tr>
+			<td align="justify">
+				<font size="4">
+					We also perform a comprehensive qualitative evaluation using real-world pre- and post-seismic images from the 
+					Ridgecrest earthquake region, captured by medium- and high-resolution sensors. Our results show that \microflow achieves 
+					photometric accuracy across small and very small displacement ranges—a first for a deep learning-based optical flow model..
+
+					TODO image with both directions of displacement for COSI-Corr / RAFT / IR / Ours
+			</td>
+		</tr>
+	</table>
+
+	
+
+	<hr>
+	<table align=center width=450px>
+		<center><h1>Paper and Supplementary Material</h1></center>
+		<tr>
+			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
+			<td><span style="font-size:14pt">J. Bertrand, S. Giffard-Roisin, J. Hollingsworth, J. Mairal.<br>
+				<b>MicroFlow: Domain-Specific Optical Flow for Ground Deformation Estimation in Seismic Events.</b><br>
+				(hosted on <a href="https://openreview.net/pdf?id=9QsdPQlWiE">Openreview</a>)<br>
+				<span style="font-size:4pt"><a href=""><br></a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table align=center width=600px>
+	</table>
+
+	<hr>
+	<br>
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center><h1>Acknowledgements</h1></center>
+					The authors would like to sincerely thank Tristan Montagnon for his helpful discussions.
+					This project was supported by ANR 3IA MIAI@Grenoble Alpes (ANR-19-P3IA-0003) and by ERC grant number 101087696 (APHELEIA project).
+					This work was granted access to the HPC resources of IDRIS under the allocation [AD011015113] made by GENCI.
+					This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found <a href="https://github.com/richzhang/webpage-template">here</a>.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+<br>
+</body>
+</html>
+
